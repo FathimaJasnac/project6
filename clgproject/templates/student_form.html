@@ -1,0 +1,317 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <title>EDUWEB</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<style>
+/* Importing fonts from Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Reseting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(45deg, #ce1e53, #8f00c7);
+    min-height: 100vh;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.wrapper {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 30px 45px;
+    box-shadow: 5px 25px 35px #3535356b;
+}
+
+ label {
+    display: block;
+    padding-bottom: 0.2rem;
+}
+
+ .form .row {
+    padding: 0.6rem 0;
+}
+
+ .form .row .form-control {
+    box-shadow: none;
+}
+
+ .form .option {
+    position: relative;
+    padding-left: 50px;
+    cursor: pointer;
+}
+
+
+ .form .option input {
+    opacity: 0;
+}
+
+ .form .checkmark {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #bbb;
+    border-radius: 50%;
+}
+
+ .form .option input:checked~.checkmark:after {
+    display: block;
+}
+
+ .form .option:hover .checkmark {
+    background: #f3f3f3;
+}
+
+ .form .option .checkmark:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    display: block;
+    background: linear-gradient(45deg, #ce1e53, #8f00c7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 300ms ease-in-out 0s;
+}
+
+ .form .option input[type="radio"]:checked~.checkmark {
+    background: #fff;
+    transition: 300ms ease-in-out 0s;
+}
+
+ .form .option input[type="radio"]:checked~.checkmark:after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#Purpose {
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    color: #333;
+}
+
+#sub:focus {
+    outline: none;
+}
+
+@media(max-width: 768.5px) {
+    .wrapper {
+        margin: 30px;
+    }
+
+    .wrapper .form .row {
+        padding: 0;
+    }
+}
+
+@media(max-width: 400px) {
+    .wrapper {
+        padding: 25px;
+        margin: 20px;
+    }
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+.material{
+    width=100%;
+    display: block;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    color: #333;
+}
+option {
+  margin: 0.5em;
+  }
+
+#purpose{
+    width=100%;
+    display: block;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    color: #333;
+}
+.button{
+   width:100%;
+   cursor:pointer;
+   margin-bottom: 20px;
+}
+.button button{
+    width:100%;
+    padding:10px;
+    font-size:20px;
+    color:#fff;
+    background-color: 3806bcd;
+    border:none;
+    outline : none;
+    border-radius:40px;
+    cursor:pointer;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper rounded bg-white">
+    <div class="h3">Student Registration Form</div>
+    <div class="form">
+        <form method="POST" action="{% url 'clgapp:student_form' %}">
+        {% csrf_token %}
+
+            <div class="col-md-12 mt-md-0 mt-3">
+                <label for="username">Name</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+
+        <div class="col-md-12 mt-md-0 mt-3">
+            <label for="address">Address</label>
+            <textarea id="address" class="form-control" required></textarea>
+        </div>
+
+            <div class="col-md-12 mt-md-0 mt-3">
+                <label for="date">DOB</label>
+                <input type="date" class="form-control" id="date" required>
+            </div>
+            <div class="col-md-12 mt-md-0 mt-3">
+                <label for="age">AGE</label>
+                <input type="text" class="form-control" id="age" required>
+            </div>
+            <div class="col-md-12 mt-md-0 mt-3">
+                <label>Gender</label>
+                <div class="d-flex align-items-center mt-2">
+                    <label class="option">
+                        <input type="radio" name="radio">Male
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="option ms-4">
+                        <input type="radio" name="radio">Female
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="col-md-12 mt-md-0 mt-3">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="col-md-12 mt-md-0 mt-3">
+                <label for="phone-number">Phone Number</label>
+                <input type="tel" id="phone-number" class="form-control" required>
+            </div>
+
+        <div class=" my-md-2 my-3">
+            <label for="Purpose">Purpose</label>
+            <select id="Purpose" name="purpose" required>
+                <option value="" selected hidden>Choose Option</option>
+                <option value="Enquiry">Enquiry</option>
+                <option value="PlaceOrder">Place Order</option>
+                <option value="Return">Return</option>
+                <option value="study">study</option>
+            </select>
+        </div>
+
+        <div>
+            <div class="col-xs-6">
+                <label for="select1">Department</label>
+                <select class="form-control" name="Department" id="select1">
+                    <option value="">Choose Department</option>
+                    <option value="1">Commerce</option>
+                    <option value="2">Science</option>
+                    <option value="3">Humanities</option>
+                    <option value="4">Arts</option>
+                    <option value="5">Langauge</option>
+                </select>
+
+                </div>
+                <div class="col-xs-6">
+                    <label for="select2">Courses</label>
+                    <select class="form-control" name="select2" id="select2">
+                        <option value="">Choose Courses</option>
+                        <option value="1">BBA</option>
+                        <option value="1">BCOM Finance</option>
+                        <option value="2">Biology Science</option>
+                        <option value="2">Computer Science</option>
+                        <option value="3">Psychology</option>
+                        <option value="3">Sociology</option>
+                        <option value="4">Fine Arts</option>
+                        <option value="4">Economics</option>
+                        <option value="5">Hindi</option>
+                        <option value="5">English<option>
+                    </select>
+
+                </div>
+        </div>
+        <script>
+            //Reference: https://jsfiddle.net/fwv18zo1/
+            var $select1 = $( '#select1' ),
+		    $select2 = $( '#select2' ),
+            $options = $select2.find( 'option' );
+
+          $select1.on( 'change', function() {
+	      $select2.html( $options.filter( '[value="' + this.value + '"]' ) );
+          } ).trigger( 'change' );
+        </script>
+
+            <div class=" my-md-3 my-4">
+                <label>Materials Provide:</label>
+                <div class="materials">
+                    <input type="checkbox" id="notebook" name="materials" value="notebook"> Notebook
+                    <input type="checkbox" id="pen" name="materials" value="pen"> Pen
+                    <input type="checkbox" id="examPapers" name="materials" value="examPapers"> Exam Papers
+                    <input type="checkbox" id="pencil" name="materials" value="pencil"> pencil
+                    <input type="checkbox" id="chart" name="materials" value="chart"> chart
+                </div>
+            </div>
+            <div class="d-flex justify-content">
+               <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+               <a href="{% url 'clgapp:index' %}" style="text-align: left;position: relative;margin: 0px 500px;" type="submit" name="Logout" class="btn btn-info btn-md">Logout</a>
+            </div>
+<!--            <div class="d-flex justify-content" >-->
+<!--               -->
+<!--            </div>-->
+            {% if messages %}
+                {% for msg in messages %}
+                <div class="alert alert-success d-flex align-items-center" role="alert">
+                    {{msg}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            {% endif %}
+        <p class="text-center text-muted mt-5 mb-0">Return to home page<a href="{% url 'clgapp:index' %}" class="fw-bold text-body">&nbsp; Home</a></p>
+    </form>
+    </div>
+</div>
+</body>
+</html>
